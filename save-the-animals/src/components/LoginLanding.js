@@ -74,17 +74,17 @@ export const LoginLanding = (props) => {
 
                 <h2>I Am A Global Supporter</h2>
                 <Link to="/signin/supporter">
-                    <button class="primary" type="submit">Supporter <i class="fas fa-gift"></i></button>
+                    <button className="primary" type="submit">Supporter <i className="fas fa-gift"></i></button>
                 </Link>
             
                 <h2>I Am A Conservation Organization</h2>
                 <Link to="/signin/organization">
-                    <button class="alt" type="submit">Organization <i class="fas fa-globe"></i></button>
+                    <button className="alt" type="submit">Organization <i className="fas fa-globe"></i></button>
                 </Link>
             
                 <h2>Already Have An Account?</h2>
                 <Link to="/signin/login">
-                    <button class="alt" type="submit">Login <i class="fas fa-user-circle"></i></button>
+                    <button className="alt" type="submit">Login <i className="fas fa-user-circle"></i></button>
                 </Link>
              
                </section>

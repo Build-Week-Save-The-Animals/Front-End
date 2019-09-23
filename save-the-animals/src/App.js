@@ -33,7 +33,7 @@ function App() {
   return (
     <AppStyle className="App">
 
-      <VideoStyles muted autoPlay loop src="https://gcs-vimeo.akamaized.net/exp=1569275167~acl=%2A%2F907838704.mp4%2A~hmac=d8befcd3eb7c685be35bbbf153f67bf806ccd3384f8e5f15db4fca270a091de2/vimeo-prod-skyfire-std-us/01/30/10/250154065/907838704.mp4"></VideoStyles>
+      <VideoStyles muted autoPlay loop src=""></VideoStyles>
       <Navagation />
 
       <Route exact path="/signin" component={LoginLanding}/>

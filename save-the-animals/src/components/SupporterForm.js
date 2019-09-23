@@ -111,9 +111,8 @@ export const SupporterFormik = withFormik({
             password:val.password || ""
         }
     },
-
-    handleSubmit(values,{setStatus}){
-        setStatus(values);
+    handleSubmit({username,password},{setStatus}){
+        setStatus({username,password})
     }
 
 })(SupporterForm);

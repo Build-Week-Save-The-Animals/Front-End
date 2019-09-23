@@ -118,9 +118,8 @@ export const OrganizationFormik = withFormik({
             password:val.password || ""
         }
     },
-
-    handleSubmit(values,{setStatus}){
-        setStatus(values);
+    handleSubmit({username,password},{setStatus}){
+        setStatus({username,password})
     }
 
 })(OrganizationForm)

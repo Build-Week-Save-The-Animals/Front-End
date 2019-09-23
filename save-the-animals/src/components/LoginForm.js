@@ -127,8 +127,8 @@ export const LoginFormik = withFormik({
         userName: Yup.string().required(''),
         password: Yup.string().required()
     }),
-    handleSubmit(values,{setStaus}){
-        setStaus(values)
+    handleSubmit({username,password},{setStatus}){
+        setStatus({username,password})
     }
 
     
