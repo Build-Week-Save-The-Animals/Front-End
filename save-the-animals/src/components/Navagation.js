@@ -1,26 +1,30 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from "styled-components";
+import {colors} from "../colors";
+
 
 const NavStyle = styled.nav`
     align-items: center;
     padding: 0 16px;
-    border-bottom: 2px solid #efefef;
+    
     margin-bottom: 32px;
 
     a{
         text-decoration: none;
         color: #fff;
         font-weight: bold;
-        margin-right: 8px;
+        padding-right: 25px;
+        border-bottom: 2px solid #efefef;
     }
 
     a:last-of-type {
         margin-right: 0;
     }
 
-    .active{
-        color:
+    a:hover{
+        color:${colors.mint};
+        border-bottom: 2px solid ${colors.mint};
     }
 `
 
@@ -30,8 +34,8 @@ const Navagation = () => {
     return (
         <NavStyle>
             <div className="nav-links">
-                <NavLink to="/"> Home </NavLink>
-                <NavLink to="/about"> About </NavLink>
+                <NavLink exact to="/"> Home </NavLink>
+                <NavLink exact to="/about"> About </NavLink>
             </div>
         </NavStyle>
     )
