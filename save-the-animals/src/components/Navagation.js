@@ -1,17 +1,39 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
+import styled from "styled-components";
+
+const NavStyle = styled.nav`
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 2px solid #efefef;
+    margin-bottom: 32px;
+
+    a{
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    a:last-of-type {
+        margin-right: 0;
+    }
+
+    .active{
+        color:
+    }
+`
+
+
 
 const Navagation = () => {
     return (
-    <div className="Nav">
-        <nav>
+        <NavStyle>
             <div className="nav-links">
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
+                <NavLink to="/"> Home </NavLink>
+                <NavLink to="/about"> About </NavLink>
             </div>
-        </nav>
-    </div>
-    
+        </NavStyle>
     )
 }
 
