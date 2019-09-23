@@ -2,6 +2,8 @@ import React from 'react';
 import {withFormik, Form, Field} from 'formik';
 import styled from "styled-components";
 import * as Yup from 'yup';
+import { connect } from 'react-redux';
+import { doLogin } from '../actions';
 
 const LoginFormStyle = styled.div`
 
@@ -20,7 +22,7 @@ function LoginForm(props){
     )
 }
 
-export const LoginFormik = withFormik({
+const LocalLoginFormik = withFormik({
     mapsPropsToValues({userName, password}) {
         return {
             userName: userName || '',
@@ -34,6 +36,6 @@ export const LoginFormik = withFormik({
     handleSubmit(values){
         //pass into backend function 
     }
-
-    
 })(LoginForm);
+
+export const LoginFormik = connect(null, { doLogin })(LocalLoginFormik);
