@@ -9,9 +9,22 @@ function LocalCampaignPage({campaigns, getAllCampaigns}){
         getAllCampaigns()
     }, []);
 
+    if(!campaigns){
+        return <p>No Campaigns to Show</p>
+    }
+
+    const cards = campaigns.map((e,i)=>{
+        return <UserCard key={i} {...e}></UserCard>
+    })
+
+    console.log(campaigns);
+    
+
+
     return (
         <section>
             <Search></Search>
+            {cards}
         </section>
     )
 }
