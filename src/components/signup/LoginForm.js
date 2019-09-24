@@ -4,6 +4,8 @@ import {withFormik, Field,Form} from 'formik';
 import styled from "styled-components";
 import * as Yup from 'yup';
 import {colors} from '../../colors';
+import { connect } from 'react-redux';
+import { doLogin } from '../../actions';
 
 
 const LoginFormStyle = styled.div`
@@ -91,9 +93,9 @@ function LoginForm({status,doLogin}){
 
     useEffect(()=>{
         if(status){
-            doLogin(status);
+            doLogin(status)
         }
-    },[])
+    },[status])
 
 
     return(
@@ -110,13 +112,13 @@ function LoginForm({status,doLogin}){
                 <Field type="password" name="password" placeholder="Password"/>
                 </label>
 
-                <button className="alt" type="submit">Login <i class="fas fa-user-circle"></i></button>
+                <button className="alt" type="submit">Login <i className="fas fa-user-circle"></i></button>
             </Form>
         </LoginFormStyle>
     )
 }
 
-export const LoginFormik = withFormik({
+const LocalLoginFormik = withFormik({
     mapsPropsToValues({username, password}) {
         return {
             username: username || '',
@@ -133,3 +135,7 @@ export const LoginFormik = withFormik({
 
     
 })(LoginForm);
+
+export const LoginFormik = connect((state) => {
+    return { ...state.login };
+}, { doLogin })(LocalLoginFormik);
