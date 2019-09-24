@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import UserCard from "./UserCard";
 import Search from "./Search";
+import { connect } from 'react-redux';
+import { getAllCampaigns } from '../../actions';
 
-export function CampaignPage(props){
-
-    const cards = props.campaigns.map((e,i)=>{
-        return <UserCard key={i} {...e}></UserCard>
-    })
+function LocalCampaignPage({campaigns, getAllCampaigns}){
+    useEffect(() => {
+        getAllCampaigns()
+    }, []);
 
     return (
         <section>
             <Search></Search>
-            {cards}
-
         </section>
     )
 }
+
+export const CampaignPage = connect((state) => {
+    return { ...state.campaigns }
+}, { getAllCampaigns })(LocalCampaignPage);
