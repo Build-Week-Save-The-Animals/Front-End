@@ -8,7 +8,6 @@ import {SupporterFormik} from './components/SupporterForm';
 import {OrganizationFormik} from './components/OrganizationForm';
 import styled from "styled-components";
 
-//austinthemichaud@gmail.com
 
 
 const AppStyle = styled.div`

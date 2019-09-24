@@ -1,0 +1,13 @@
+import axios from 'axios';
+
+export const axiosWithAuth = () => {
+  const token = localStorage.getItem('token');
+  const tokenType = localStorage.getItem('tokenType');
+
+  return axios.create({
+    baseURL: "https://build-save-the-animals.herokuapp.com",
+    headers: {
+      Authorization: token ? token + tokenType : `Basic ${btoa('client:secret')}`,
+    },
+  });
+}

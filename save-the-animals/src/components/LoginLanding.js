@@ -1,15 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {colors} from "../colors";
 
-
-const colors = {
-    red:"#f1173a",
-    teal:"#17f1ce",
-    mint:"#8ff8e7",
-    white:"#fff",
-    black:"#000"
-}
 
 const LoginFormStyle = styled.div`
     section {
@@ -25,8 +18,6 @@ const LoginFormStyle = styled.div`
         font-weight: bold;
         box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.7);
         border-radius: 20px;
-        cursor: pointer;
-        outline: none;
 
         h1{
             font-family: 'Noto Serif', serif;
@@ -38,12 +29,14 @@ const LoginFormStyle = styled.div`
         }
 
         button{
+            cursor: pointer;
             box-sizing:border-box;
-            height:40px;
-            padding:7px 30px;
+            height:50px;
+            padding:15px 60px;
             font-family: 'Roboto', sans-serif;
             margin: 32px 0;
             border:none;
+            border-radius:25px;
         }
 
         .primary{
@@ -81,17 +74,17 @@ export const LoginLanding = (props) => {
 
                 <h2>I Am A Global Supporter</h2>
                 <Link to="/signin/supporter">
-                    <button class="primary" type="submit">Global <i class="fas fa-gift"></i></button>
+                    <button className="primary" type="submit">Supporter <i className="fas fa-gift"></i></button>
                 </Link>
             
                 <h2>I Am A Conservation Organization</h2>
                 <Link to="/signin/organization">
-                    <button class="alt" type="submit">Conservation <i class="fas fa-globe"></i></button>
+                    <button className="alt" type="submit">Organization <i class="fas fa-globe"></i></button>
                 </Link>
             
                 <h2>Already Have An Account?</h2>
                 <Link to="/signin/login">
-                    <button class="alt" type="submit">Login <i class="fas fa-user-circle"></i></button>
+                    <button className="alt" type="submit">Login <i className="fas fa-user-circle"></i></button>
                 </Link>
              
                </section>
