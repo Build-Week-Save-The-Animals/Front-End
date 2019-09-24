@@ -90,7 +90,6 @@ const LoginFormStyle = styled.div`
 `
 
 function LoginForm({status,doLogin}){
-
     useEffect(()=>{
         if(status){
             doLogin(status);
@@ -134,4 +133,6 @@ const LocalLoginFormik = withFormik({
     }
 })(LoginForm);
 
-export const LoginFormik = connect(null, { doLogin })(LocalLoginFormik);
+export const LoginFormik = connect((state) => {
+    return { ...state.login };
+}, { doLogin })(LocalLoginFormik);
