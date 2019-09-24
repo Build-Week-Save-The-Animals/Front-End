@@ -1,14 +1,16 @@
 import React,{useState,useEffect} from 'react';
 import { Route } from 'react-router-dom';
+import styled from "styled-components";
+
 import Navigation from './components/Navigation';
 import {LoginLanding} from './components/signup/LoginLanding';
 import {LoginFormik} from './components/signup/LoginForm';
 import {SupporterFormik} from './components/signup/SupporterForm';
 import {OrganizationFormik} from './components/signup/OrganizationForm';
-
 import {CampaignPage} from './components/campaign/CampaignPage';
+import {CampaignFormik} from './components/organization/CampaignForm';
 
-import styled from "styled-components";
+
 
 
 
@@ -40,6 +42,9 @@ function App() {
       <VideoStyles muted autoPlay loop src={require("./background.mp4")}></VideoStyles>
       <Navigation />
       
+
+
+      <Route exact path="/organization" component={CampaignFormik}></Route>
       <Route exact path="/campaigns" render={(props)=>{return <CampaignPage {...props}></CampaignPage>  }}></Route>
       <Route exact path="/signup" component={LoginLanding}/>
       <Route exact path="/signup/supporter" component={SupporterFormik}/>
