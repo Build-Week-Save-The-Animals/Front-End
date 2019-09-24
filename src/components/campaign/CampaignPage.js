@@ -1,6 +1,6 @@
 import React from "react";
 import UserCard from "./UserCard";
-import Search from "./Seacrh";
+import Search from "./Search";
 
 export function CampaignPage(props){
 
@@ -10,6 +10,8 @@ export function CampaignPage(props){
 
     return (
         <section>
+            <Search></Search>
+            {cards}
 
         </section>
     )
