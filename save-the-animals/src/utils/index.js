@@ -7,7 +7,7 @@ export const axiosWithAuth = () => {
   return axios.create({
     baseURL: "https://build-save-the-animals.herokuapp.com",
     headers: {
-      Authorization: token ? token + tokenType : `Basic ${btoa('client:secret')}`,
+      Authorization: token ? `${tokenType} ${token}` : `Basic ${btoa('client:secret')}`,
     },
   });
 }
