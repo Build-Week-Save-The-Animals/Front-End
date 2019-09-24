@@ -13,7 +13,7 @@ export const login = (state = {}, action) => {
 
 export const campaigns = (state = {}, action) => {
   switch (action.type) {
-    case actions.FETCH_CAMPAIGNS_ALL_RESULT:
+    case actions.FETCH_CAMPAIGNS_ALL_SUCCESS:
       return { ...state, campaigns: action.payload };
     default:
       return state;

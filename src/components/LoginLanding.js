@@ -79,7 +79,7 @@ export const LoginLanding = (props) => {
             
                 <h2>I Am A Conservation Organization</h2>
                 <Link to="/signin/organization">
-                    <button className="alt" type="submit">Organization <i class="fas fa-globe"></i></button>
+                    <button className="alt" type="submit">Organization <i className="fas fa-globe"></i></button>
                 </Link>
             
                 <h2>Already Have An Account?</h2>
