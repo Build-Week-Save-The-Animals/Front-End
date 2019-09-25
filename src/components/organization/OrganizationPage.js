@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 
 export function OrganizationPage(props) {
     const cards = [].map((e,i)=>{
-        return <OrganizationCard key={i} {...e}/>
+        return <OrganizationCard setForm={props.setForm} key={i} {...e}/>
     })
     
     return(
         <>
-            <CampaignFormik/>
+            <CampaignFormik form={props.form}/>
             {cards}
         </>
 

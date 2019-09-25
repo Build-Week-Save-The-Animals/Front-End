@@ -31,7 +31,10 @@ const VideoStyles = styled.video`
   left:0;
 `
 
-function App({ store }) {
+function App({ store }){
+
+  const [formValues,setFormValues] = useState();
+
   useEffect(() => {
     store.dispatch(getUserInfo());
   });
@@ -44,7 +47,7 @@ function App({ store }) {
 
       
       <Route exact path="/" component={LoginLanding}/>          
-      <Route exact path="/organization" component={OrganizationPage}></Route>
+      <Route exact path="/organization" render={()=> <OrganizationPage form={formValues} setForm={setFormValues}/>  }></Route>
       <Route exact path="/campaigns" render={(props)=>{return <CampaignPage {...props}></CampaignPage>  }}></Route>
       <Route exact path="/signup/supporter" component={SupporterFormik}/>
       <Route exact path="/signup/organization" component={OrganizationFormik}/>
