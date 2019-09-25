@@ -1,10 +1,18 @@
 import React, { useEffect } from "react";
 import OrganizationCard from "./OrganizationCard";
-import Search from "./Search";
+import {CampaignFormik} from './CampaignForm';
 import { connect } from 'react-redux';
 
-function OrganizationPage(props) {
+export function OrganizationPage(props) {
+    const cards = [].map((e,i)=>{
+        return <OrganizationCard key={i} {...e}/>
+    })
+    
     return(
+        <>
+            <CampaignFormik/>
+            {cards}
+        </>
 
     )
 }

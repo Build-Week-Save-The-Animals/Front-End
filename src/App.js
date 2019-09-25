@@ -9,7 +9,7 @@ import {LoginFormik} from './components/signup/LoginForm';
 import {SupporterFormik} from './components/signup/SupporterForm';
 import {OrganizationFormik} from './components/signup/OrganizationForm';
 import {CampaignPage} from './components/campaign/CampaignPage';
-import {CampaignFormik} from './components/organization/CampaignForm';
+import {OrganizationPage} from './components/organization/OrganizationPage';
 
 
 const AppStyle = styled.div`
@@ -44,7 +44,7 @@ function App({ store }) {
 
       
       <Route exact path="/" component={LoginLanding}/>          
-      <Route exact path="/organization" component={CampaignFormik}></Route>
+      <Route exact path="/organization" component={OrganizationPage}></Route>
       <Route exact path="/campaigns" render={(props)=>{return <CampaignPage {...props}></CampaignPage>  }}></Route>
       <Route exact path="/signup/supporter" component={SupporterFormik}/>
       <Route exact path="/signup/organization" component={OrganizationFormik}/>

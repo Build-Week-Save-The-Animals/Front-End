@@ -34,6 +34,8 @@ const NavStyle = styled.nav`
 
 
 const Navigation = ({ user }) => {
+
+    console.dir(user)
     return (
         <NavStyle>
             <div className="nav-links">
@@ -41,6 +43,8 @@ const Navigation = ({ user }) => {
                 <a href="https://romantic-johnson-6f5765.netlify.com/aboutus"> About Us </a>
                 <NavLink exact to="/"> Sign Up </NavLink>
                 <NavLink exact to="/campaigns"> Campaigns </NavLink>
+                {/* if user is organization, render */}
+                <NavLink exact to="/organization"> Organization </NavLink> 
             </div>
         </NavStyle>
     )
