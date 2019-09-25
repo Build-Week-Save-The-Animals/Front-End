@@ -21,15 +21,26 @@ const AppStyle = styled.div`
   justify-content:center;
   position:relative;
   overflow-x:hidden;
+
+  #back{
+    width:100vw;
+    height:100vh;
+    z-index:-2;
+    position:fixed;
+    top:0;
+    left:0;
+    background:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    video{
+      width:100vw;
+    }
+  }
 `
 
-const VideoStyles = styled.video`
-  width:100vw;
-  z-index:-1;
-  position:absolute;
-  top:0;
-  left:0;
-`
+
 
 function App({ store }){
 
@@ -42,7 +53,10 @@ function App({ store }){
   return (
     <AppStyle className="App">
 
-      <VideoStyles muted autoPlay loop src={require("./background.mp4")}></VideoStyles>
+      <section id="back">
+        <video muted autoPlay loop src={require("./background.mp4")}></video>
+      </section>
+      
       <Navigation />
 
       

@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 const NavStyle = styled.nav`
     position:fixed;
     top:0;
-    left:translate(-50%, -50%);
+    left:50%;
+    transform:translate(-50%, -50%);
     margin: 32px auto;
 
 
