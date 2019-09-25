@@ -6,16 +6,27 @@ import { connect } from 'react-redux';
 import { addCampaign } from '../../actions';
 
 const CampaignFormStyle = styled.div`
+    display:flex;
+    align-items:flex-start;
+
+    h1{
+        color:${colors.teal};
+        font-size:2.5rem;
+        background-color:#353583;
+        padding:30px;
+        border-right:8px solid ${colors.mint};
+        margin-right:15px;
+    }
+
     form {
         display:flex;
-        flex-direction:column;
+        flex-direction:row;
+        flex-wrap:wrap;
         align-items:center;
         background:#0005;
         border-radius:20px;
 
-        width: 400px;
-        margin: auto 100px;
-        margin-top: 450px;
+        width: 90%;
         padding: 32px;
         font-weight: bold;
         box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.7);
@@ -91,6 +102,9 @@ const CampaignFormStyle = styled.div`
 function CampaignForm(props){
     return (
         <CampaignFormStyle> 
+         
+            <h1>Add New Campaign</h1>
+          
             <Form>
                 <label >
                     Enter Title:
@@ -133,6 +147,11 @@ function CampaignForm(props){
                     <Field type="number" name="funding" placeholder="Funding" value={props.funding}/>
                 </label>
 
+                <label >
+                    Add a Photo:
+                    <Field type="text" name="photo" value={props.photo} placeholder="Photo"/>
+                </label>
+
                 <button type="submit">Submit <i className="fas fa-user-circle"></i></button>
                 
             </Form>
@@ -151,13 +170,14 @@ const LocalCampaignFormik = withFormik({
             urgency:val.urgency || "",
             donations:val.donations || 0,
             funding:val.funding || 0,
+            photo:val.photo || "https://images.pexels.com/photos/148182/pexels-photo-148182.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
         }
     },
     handleSubmit(values, { props }){
         
         let formattedValues = {
             "title": values.title,
-            "photo": "https://images.pexels.com/photos/148182/pexels-photo-148182.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "photo": values.photo,
             "location": values.area,
             "description": values.description,
             "species": values.species,

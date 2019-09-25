@@ -6,7 +6,7 @@ import { getAllCampaigns } from '../../actions';
 import styled from "styled-components";
 
 const CampaignPageStyle = styled.section`
-    width: 60vw;
+    width: 70vw;
     height:80vh;
     display:flex;
     flex-wrap:wrap;

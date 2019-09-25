@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const OrganizationPageStyle = styled.section`
-
+    width:80vw;
+    min-height:500px;
 `
 export function OrganizationPage(props) {
     const cards = [].map((e,i)=>{
