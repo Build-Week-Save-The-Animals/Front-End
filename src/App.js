@@ -14,6 +14,7 @@ import {CampaignFormik} from './components/organization/CampaignForm';
 
 
 
+
 const AppStyle = styled.div`
   height:100%;
   width:100%;
@@ -41,6 +42,7 @@ function App() {
 
       <VideoStyles muted autoPlay loop src={require("./background.mp4")}></VideoStyles>
       <Navigation />
+
       
       <Route exact path="/" component={LoginLanding}/>          
       <Route exact path="/organization" component={CampaignFormik}></Route>

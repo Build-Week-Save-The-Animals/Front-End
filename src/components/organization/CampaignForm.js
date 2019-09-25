@@ -12,7 +12,7 @@ function CampaignForm(props){
 
                 <label >
                     Enter Location:
-                <Field type="text" name="location" placeholder="Location"/>
+                <Field type="text" name="area" placeholder="Location"/>
                 </label>
 
                 <label >
@@ -45,7 +45,7 @@ export const CampaignFormik = withFormik({
     mapPropsToValues(val){
         return {
             title:val.title || "",
-            location:val.location || "",
+            area:val.area || "",
             description:val.description || "",
             species:val.species || "",
             urgency:val.urgency || "",
@@ -53,6 +53,6 @@ export const CampaignFormik = withFormik({
         }
     },
     handleSubmit(values){
-        alert("sent");
+        
     }
 })(CampaignForm)  
