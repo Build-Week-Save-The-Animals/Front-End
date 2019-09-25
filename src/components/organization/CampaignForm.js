@@ -1,6 +1,8 @@
 import React from "react";
 import {withFormik,Field,Form} from "formik";
 import styled from "styled-components";
+import { connect } from 'react-redux';
+import { addCampaign } from '../../actions';
 
 function CampaignForm(props){
     return (
@@ -41,7 +43,7 @@ function CampaignForm(props){
     )
 }
 
-export const CampaignFormik = withFormik({
+const LocalCampaignFormik = withFormik({
     mapPropsToValues(val){
         return {
             title:val.title || "",
@@ -52,7 +54,9 @@ export const CampaignFormik = withFormik({
             donations:val.donations || ""
         }
     },
-    handleSubmit(values){
-        
+    handleSubmit(values, { props }){
+        props.addCampaign(values);
     }
-})(CampaignForm)  
+})(CampaignForm)
+
+export const CampaignFormik = connect(null, { addCampaign })(LocalCampaignFormik);
