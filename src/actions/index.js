@@ -17,11 +17,14 @@ export const doLogin = data => dispatch => {
 
   axiosWithAuth().post('/login', qs.stringify({ ...data, grant_type: 'password' }))
     .then(response => {
-      console.log('Successful login', response.data);
-
       localStorage.setItem("token", response.data.access_token);
       localStorage.setItem("tokenType", response.data.token_type);
-      dispatch({ type: LOGIN_RESULT, payload: { success: true } });
+
+      return axiosWithAuth().get('/users/getuser');
+    })
+    .then(response => {
+      dispatch({ type: LOGIN_RESULT, payload: { success: true, user: response.data } });
+      console.log('Successful login', response.data);
     })
     .catch(error => {
       console.log('Login failed', error);
