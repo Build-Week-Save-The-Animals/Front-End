@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styled from "styled-components";
 import {colors} from "../colors";
+import { connect } from 'react-redux';
 
 
 const NavStyle = styled.nav`
@@ -32,7 +33,7 @@ const NavStyle = styled.nav`
 
 
 
-const Navigation = () => {
+const Navigation = ({ user }) => {
     return (
         <NavStyle>
             <div className="nav-links">
@@ -45,5 +46,7 @@ const Navigation = () => {
     )
 }
 
-export default Navigation;
+export default connect(state => {
+    return { user: state.login.user }
+})(Navigation);
 

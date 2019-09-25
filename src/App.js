@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { Route } from 'react-router-dom';
 import styled from "styled-components";
+import { getUserInfo } from './actions';
 
 import Navigation from './components/Navigation';
 import {LoginLanding} from './components/signup/LoginLanding';
@@ -9,10 +10,6 @@ import {SupporterFormik} from './components/signup/SupporterForm';
 import {OrganizationFormik} from './components/signup/OrganizationForm';
 import {CampaignPage} from './components/campaign/CampaignPage';
 import {CampaignFormik} from './components/organization/CampaignForm';
-
-
-
-
 
 
 const AppStyle = styled.div`
@@ -34,8 +31,10 @@ const VideoStyles = styled.video`
   left:0;
 `
 
-function App() {
-
+function App({ store }) {
+  useEffect(() => {
+    store.dispatch(getUserInfo());
+  });
 
   return (
     <AppStyle className="App">
