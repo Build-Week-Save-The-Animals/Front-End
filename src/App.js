@@ -42,11 +42,9 @@ function App() {
       <VideoStyles muted autoPlay loop src={require("./background.mp4")}></VideoStyles>
       <Navigation />
       
-
-
+      <Route exact path="/" component={LoginLanding}/>          
       <Route exact path="/organization" component={CampaignFormik}></Route>
       <Route exact path="/campaigns" render={(props)=>{return <CampaignPage {...props}></CampaignPage>  }}></Route>
-      <Route exact path="/signup" component={LoginLanding}/>
       <Route exact path="/signup/supporter" component={SupporterFormik}/>
       <Route exact path="/signup/organization" component={OrganizationFormik}/>
       <Route exact path="/signup/login" component={LoginFormik}/>

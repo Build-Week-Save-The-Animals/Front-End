@@ -3,7 +3,7 @@ import {withFormik, Field, Form} from "formik";
 import styled from "styled-components";
 import {colors} from '../../colors';
 
-const SupporterFormStyle = styled.form`
+const SupporterFormStyle = styled.section`
     form {
         display:flex;
         flex-direction:column;
@@ -98,7 +98,7 @@ function SupporterForm({status,doLogin}){
                     <Field type="password" name="password" placeholder="password"></Field>
                 </label>
 
-                <button className="alt" type="submit">Submit <i class="fas fa-user-circle"></i></button>
+                <button className="alt" type="submit">Submit <i className="fas fa-user-circle"></i></button>
             </Form>
         </SupporterFormStyle>
     )
@@ -108,11 +108,13 @@ export const SupporterFormik = withFormik({
     mapPropsToValues(val){
         return {
             username:val.username || "",
-            password:val.password || ""
+            password:val.password || "",
+            role: "supporter"
         }
     },
-    handleSubmit({username,password},{setStatus}){
-        setStatus({username,password})
+    handleSubmit({username,password,role},{setStatus}){
+        
+        setStatus({username,password,role})
     }
 
 })(SupporterForm);

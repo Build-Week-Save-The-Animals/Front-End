@@ -3,7 +3,7 @@ import {withFormik, Field, Form} from "formik";
 import styled from "styled-components";
 import {colors} from '../../colors';
 
-const OrganizationFormStyle = styled.div`
+const OrganizationFormStyle = styled.section`
     form {
         display:flex;
         flex-direction:column;
@@ -105,6 +105,7 @@ function OrganizationForm({status,doLogin}){
                     <Field type="password" name="password" placeholder="password"></Field>
                 </label>
 
+
                 <button className="alt" type="submit">Submit <i class="fas fa-user-circle"></i></button>
             </Form>
         </OrganizationFormStyle>
@@ -115,11 +116,12 @@ export const OrganizationFormik = withFormik({
     mapPropsToValues(val){
         return {
             username:val.username || "",
-            password:val.password || ""
+            password:val.password || "",
+            role:"organization"
         }
     },
-    handleSubmit({username,password},{setStatus}){
-        setStatus({username,password})
+    handleSubmit({username,password,role},{setStatus}){
+        setStatus({username,password,role})
     }
 
 })(OrganizationForm)

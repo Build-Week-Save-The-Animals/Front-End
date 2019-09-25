@@ -36,9 +36,9 @@ const Navigation = () => {
     return (
         <NavStyle>
             <div className="nav-links">
-                <NavLink exact to="/"> Home </NavLink>
-                <NavLink exact to="/about"> About </NavLink>
-                <NavLink exact to="/signup"> Signup </NavLink>
+                <a href="https://romantic-johnson-6f5765.netlify.com"> Home </a>
+                <a href="https://romantic-johnson-6f5765.netlify.com/aboutus"> About Us </a>
+                <NavLink exact to="/"> Sign Up </NavLink>
                 <NavLink exact to="/campaigns"> Campaigns </NavLink>
             </div>
         </NavStyle>
