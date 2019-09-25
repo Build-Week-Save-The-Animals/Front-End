@@ -8,6 +8,8 @@ import {OrganizationFormik} from './components/signup/OrganizationForm';
 
 import {CampaignPage} from './components/campaign/CampaignPage';
 
+import { getUserInfo } from './actions';
+
 import styled from "styled-components";
 
 
@@ -31,8 +33,10 @@ const VideoStyles = styled.video`
   left:0;
 `
 
-function App() {
-
+function App({ store }) {
+  useEffect(() => {
+    store.dispatch(getUserInfo());
+  });
 
   return (
     <AppStyle className="App">

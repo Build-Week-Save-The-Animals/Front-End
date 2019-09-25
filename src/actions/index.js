@@ -11,6 +11,7 @@ export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
 export const UPDATE_CAMPAIGN_SUCCESS = 'UPDATE_CAMPAIGN_SUCCESS';
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export const DELETE_CAMPAIGN_SUCCESS = 'DELETE_CAMPAIGN_SUCCESS';
+export const USER_INFO_FETCH_SUCCESS = 'USER_INFO_FETCH_SUCCESS';
 
 export const doLogin = data => dispatch => {
   dispatch({ type: LOGIN, payload: data });
@@ -20,11 +21,11 @@ export const doLogin = data => dispatch => {
       localStorage.setItem("token", response.data.access_token);
       localStorage.setItem("tokenType", response.data.token_type);
 
-      return axiosWithAuth().get('/users/getuser');
+      return getUserInfo()(dispatch);
     })
-    .then(response => {
-      dispatch({ type: LOGIN_RESULT, payload: { success: true, user: response.data } });
-      console.log('Successful login', response.data);
+    .then(user => {
+      dispatch({ type: LOGIN_RESULT, payload: { success: true, user } });
+      console.log('Successful login', user);
     })
     .catch(error => {
       console.log('Login failed', error);
@@ -37,6 +38,20 @@ export const doLogin = data => dispatch => {
         },
       });
     });
+};
+
+export const getUserInfo = () => dispatch => {
+  return new Promise((resolve, reject) => {
+    axiosWithAuth().get('/users/getuser')
+      .then(response => {
+        dispatch({ type: USER_INFO_FETCH_SUCCESS, payload: response.data });
+        resolve(response.data);
+      })
+      .catch(error => {
+        console.log('Could not get user info', error);
+        reject(error);
+      });
+  });
 };
 
 export const getAllCampaigns = () => dispatch => {
