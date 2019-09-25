@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
+import { connect } from 'react-redux';
+import { updateCampaign, deleteCampaign } from '../../actions';
 
 const OrganizationCardStyle = styled.aside`
     width:32%;
@@ -41,4 +43,4 @@ function OrganizationCard(props) {
     )
 }
 
-export default OrganizationCard;
+export default connect(null, { updateCampaign, deleteCampaign })(OrganizationCard);
