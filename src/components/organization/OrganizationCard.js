@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
+import { connect } from 'react-redux';
+import { updateCampaign, deleteCampaign } from '../../actions';
 
 
 function OrganizationCard(props) {
@@ -27,4 +29,4 @@ function OrganizationCard(props) {
     )
 }
 
-export default OrganizationCard;
+export default connect(null, { updateCampaign, deleteCampaign })(OrganizationCard);
