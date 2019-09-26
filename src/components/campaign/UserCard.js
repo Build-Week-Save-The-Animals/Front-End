@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import {colors} from '../../colors';
 import { connect } from 'react-redux';
@@ -77,14 +77,16 @@ const UserCardStyle = styled.aside`
 `
 
 function UserCard(props) {
+    const [amount, setAmount] = useState(5);
+
     return (
         <UserCardStyle>
             <h1>{props.title}</h1>
             <img src={props.photo} alt=""/>
             <p>{props.description}</p>
 
-            <input type="number" name="donation"/>
-            <button className="alt" onClick={() => console.log(props)}>Donate</button>
+            <input type="number" name="amount" value={amount} onChange={e => setAmount(e.target.value)} />
+            <button className="alt" onClick={() => props.donateToCampaign({...props, donateToCampaign: undefined}, amount)}>Donate</button>
         </UserCardStyle>
     )
 }
