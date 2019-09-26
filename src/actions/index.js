@@ -17,6 +17,8 @@ export const DONATE_CAMPAIGN_SUCCESS = 'DONATE_CAMPAIGN_SUCCESS';
 export const USER_CREATE = 'USER_CREATE';
 export const USER_CREATE_SUCCESS = 'USER_CREATE_SUCCESS';
 export const USER_CREATE_FAILURE = 'USER_CREATE_FAILURE';
+export const FETCH_CAMPAIGNS_USER = 'FETCH_CAMPAIGNS_USER';
+export const FETCH_CAMPAIGNS_USER_SUCCESS = 'FETCH_CAMPAIGNS_USER_SUCCESS';
 
 export const doLogin = data => dispatch => {
   dispatch({ type: LOGIN, payload: data });
