@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import {colors} from '../../colors';
+import { connect } from 'react-redux';
+import { donateToCampaign } from '../../actions';
 
 const UserCardStyle = styled.aside`
     width:32%;
@@ -82,9 +84,9 @@ function UserCard(props) {
             <p>{props.description}</p>
 
             <input type="number" name="donation"/>
-            <button className="alt">Donate</button>
+            <button className="alt" onClick={() => console.log(props)}>Donate</button>
         </UserCardStyle>
     )
 }
 
-export default UserCard;
+export default connect(null, { donateToCampaign })(UserCard);

@@ -12,6 +12,11 @@ export const UPDATE_CAMPAIGN_SUCCESS = 'UPDATE_CAMPAIGN_SUCCESS';
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export const DELETE_CAMPAIGN_SUCCESS = 'DELETE_CAMPAIGN_SUCCESS';
 export const USER_INFO_FETCH_SUCCESS = 'USER_INFO_FETCH_SUCCESS';
+export const DONATE_CAMPAIGN = 'DONATE_CAMPAIGN';
+export const DONATE_CAMPAIGN_SUCCESS = 'DONATE_CAMPAIGN_SUCCESS';
+export const USER_CREATE = 'USER_CREATE';
+export const USER_CREATE_SUCCESS = 'USER_CREATE_SUCCESS';
+export const USER_CREATE_FAILURE = 'USER_CREATE_FAILURE';
 
 export const doLogin = data => dispatch => {
   dispatch({ type: LOGIN, payload: data });
@@ -84,4 +89,22 @@ export const deleteCampaign = campaign => dispatch => {
   axiosWithAuth().delete(`/campaigns/campaign/delete/${campaign.campaignid}`)
     .then(response => dispatch({ type: DELETE_CAMPAIGN_SUCCESS, payload: response.data }))
     .catch(error => console.log('Delete campaign error', error));
+};
+
+export const donateToCampaign = (campaign, amount) => dispatch => {
+  dispatch({ type: DONATE_CAMPAIGN, payload: campaign });
+
+  axiosWithAuth().post('/campaigns/campaign/donate', { campaignid: campaign.campaignid, amount })
+    .then(response => dispatch({ type: DONATE_CAMPAIGN_SUCCESS, payload: response.data }))
+    .catch(error => console.log('Donate to campaign error', error));
+};
+
+export const createUser = user => dispatch => {
+  dispatch({ type: USER_CREATE, payload: user });
+
+  axiosWithAuth().post('/createnewuser', user)
+    .then(response => dispatch({ type: USER_CREATE_SUCCESS, payload: response.data }))
+    .catch(error => {
+      dispatch({ type: USER_CREATE_FAILURE, payload: error.message });
+    });
 };
