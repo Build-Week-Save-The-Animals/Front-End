@@ -16,6 +16,7 @@ const CampaignFormStyle = styled.div`
         padding:30px;
         border-right:8px solid ${colors.mint};
         margin-right:15px;
+        text-shadow:2px 6px 3px black;
     }
 
     form {
@@ -34,17 +35,20 @@ const CampaignFormStyle = styled.div`
 
         h1{
             font-family: 'Noto Serif', serif;
+            text-shadow:2px 6px 3px black;
         }
         h2{
             font-size:1.2rem;
             color:#ddd;
             font-family: 'Noto Serif', serif;
+            text-shadow:2px 6px 3px black;
         }
 
         label{
             font-size:1.2rem;
             color:#ddd;
             font-family: 'Noto Serif', serif;
+            text-shadow:2px 6px 3px black;
         }
 
         button{

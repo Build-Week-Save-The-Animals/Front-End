@@ -97,12 +97,17 @@ function OrganizationForm({status,doLogin}){
             <Form>
                 <label>
                     Enter New Username:
-                    <Field type="text" name="username" placeholder="username"></Field>
+                    <Field type="text" name="username" placeholder="Username"></Field>
                 </label>
 
                 <label>
                     Enter New Password
-                    <Field type="password" name="password" placeholder="password"></Field>
+                    <Field type="password" name="password" placeholder="Password"></Field>
+                </label>
+
+                <label>
+                    Enter Your Email
+                    <Field type="email" name="email" placeholder="Email"></Field>
                 </label>
 
 
@@ -117,11 +122,39 @@ export const OrganizationFormik = withFormik({
         return {
             username:val.username || "",
             password:val.password || "",
-            role:"organization"
+            role:"organization",
+            email:val.email || ""
         }
     },
-    handleSubmit({username,password,role},{setStatus}){
-        setStatus({username,password,role})
+    handleSubmit(values,{setStatus}){
+        console.dir(values)
+        let user = {
+            username:values.username,
+            password:values.password,
+            userroles:[
+                {
+                    "role": {
+                        "roleid": 2,
+                        "name": "data"  
+                    }
+                },
+                {
+                    "role": {
+                        "roleid": 4,
+                        "name": values.role
+                    }
+                }
+            ],
+            useremails: [
+                {
+                    useremail: values.email
+                }
+           
+            ]
+        }
+
+
+        setStatus(user)
     }
 
 })(OrganizationForm)
