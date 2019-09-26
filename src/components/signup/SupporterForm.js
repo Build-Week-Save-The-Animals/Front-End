@@ -1,7 +1,9 @@
-import React,{useEffect} from "react";
+import React from "react";
 import {withFormik, Field, Form} from "formik";
 import styled from "styled-components";
 import {colors} from '../../colors';
+import { connect } from 'react-redux';
+import { createUser } from '../../actions';
 
 const SupporterFormStyle = styled.section`
     form {
@@ -77,14 +79,7 @@ const SupporterFormStyle = styled.section`
     }
 `
 
-function SupporterForm({status,doLogin}){
-
-    useEffect(()=>{
-        if(status){
-            doLogin(status);
-        }
-    },[])
-
+function SupporterForm({doLogin}){
     return(
         <SupporterFormStyle>
             <Form>
@@ -109,7 +104,7 @@ function SupporterForm({status,doLogin}){
     )
 }
 
-export const SupporterFormik = withFormik({
+const LocalSupporterFormik = withFormik({
     mapPropsToValues(val){
         return {
             username:val.username || "",
@@ -118,7 +113,7 @@ export const SupporterFormik = withFormik({
             email:val.email || ""
         }
     },
-    handleSubmit(values,{setStatus}){
+    handleSubmit(values,{props}){
 
         let user = {
             username:values.username,
@@ -145,7 +140,9 @@ export const SupporterFormik = withFormik({
             ]
         }
         
-        setStatus(user)
+        props.createUser(user);
     }
 
 })(SupporterForm);
+
+export const SupporterFormik = connect(null, { createUser })(LocalSupporterFormik);

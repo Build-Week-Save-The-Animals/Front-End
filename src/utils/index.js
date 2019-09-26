@@ -11,3 +11,5 @@ export const axiosWithAuth = () => {
     },
   });
 }
+
+export const getUserCampaigns = id => axiosWithAuth().get(`/campaigns/byuser/${id}`);
