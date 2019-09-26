@@ -127,7 +127,7 @@ export const OrganizationFormik = withFormik({
         }
     },
     handleSubmit(values,{setStatus}){
-        console.dir(values)
+        
         let user = {
             username:values.username,
             password:values.password,
@@ -152,7 +152,6 @@ export const OrganizationFormik = withFormik({
            
             ]
         }
-
 
         setStatus(user)
     }

@@ -35,17 +35,23 @@ const NavStyle = styled.nav`
 
 
 const Navigation = ({ user }) => {
+    let organizationTab;
+    let signupTab = <NavLink exact to="/"> Sign Up </NavLink>;
 
-    console.dir(user)
+    if(user && user.userroles[1].role.name == "organization"){
+        organizationTab = <NavLink exact to="/organization"> Organization </NavLink>
+        signupTab = ""
+    }
+
+
     return (
         <NavStyle>
             <div className="nav-links">
-                <a href="https://romantic-johnson-6f5765.netlify.com"> Home </a>
                 <a href="https://romantic-johnson-6f5765.netlify.com/aboutus"> About Us </a>
-                <NavLink exact to="/"> Sign Up </NavLink>
                 <NavLink exact to="/campaigns"> Campaigns </NavLink>
-                {/* if user is organization, render */}
-                <NavLink exact to="/organization"> Organization </NavLink> 
+                <a href="https://romantic-johnson-6f5765.netlify.com"> Home </a>
+                {organizationTab}
+                {signupTab}   
             </div>
         </NavStyle>
     )

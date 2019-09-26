@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import UserCard from "./UserCard";
 import Search from "./Search";
 import { connect } from 'react-redux';
@@ -37,22 +37,35 @@ const SearchWrapper = styled.div`
 `
 
 function LocalCampaignPage({campaigns, getAllCampaigns}){
+    const [camps,setCamps] = useState([])
+
     useEffect(() => {
-        getAllCampaigns()
+        getAllCampaigns();
+        
     }, []);
 
     if(!campaigns){
         return <p>No Campaigns to Show</p>
     }
 
-    const cards = campaigns.map((e,i)=>{
+    function handleChange(e){
+        let value = e.target.value;
+        let filtered = campaigns.filter((campaign,i)=>{
+            let data = `${campaign.description} ${campaign.title}`.toLowerCase();
+            return data.includes(value);
+        })
+        setCamps(filtered);
+    }
+    
+
+    const cards = camps.map((e,i)=>{
         return <UserCard key={i} {...e}></UserCard>
     })
 
     return (
         <>
             <SearchWrapper>
-                <Search>Search<i class="fas fa-search"></i></Search>
+                <Search handleChange={handleChange} />
             </SearchWrapper>
             <CampaignPageStyle>
                 {cards}

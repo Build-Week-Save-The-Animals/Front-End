@@ -95,7 +95,10 @@ export const donateToCampaign = (campaign, amount) => dispatch => {
   dispatch({ type: DONATE_CAMPAIGN, payload: campaign });
 
   axiosWithAuth().post('/campaigns/campaign/donate', { campaignid: campaign.campaignid, amount })
-    .then(response => dispatch({ type: DONATE_CAMPAIGN_SUCCESS, payload: response.data }))
+    .then(response =>{
+      alert("Success - You Have Sent $" + amount + ".");
+      dispatch({ type: DONATE_CAMPAIGN_SUCCESS, payload: response.data })
+    })
     .catch(error => console.log('Donate to campaign error', error));
 };
 
