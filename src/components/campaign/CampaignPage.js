@@ -31,17 +31,17 @@ const SearchWrapper = styled.div`
         width:500px;
     }
 
-    input::placeholder{
+    input::placeholder {
         color:white;
     }
 `
 
 function LocalCampaignPage({campaigns, getAllCampaigns}){
-    const [camps,setCamps] = useState([])
+    const [camps,setCamps] = useState()
+
 
     useEffect(() => {
         getAllCampaigns();
-        
     }, []);
 
     if(!campaigns){
@@ -58,7 +58,9 @@ function LocalCampaignPage({campaigns, getAllCampaigns}){
     }
     
 
-    const cards = camps.map((e,i)=>{
+    const cards = (camps) ? camps.map((e,i)=>{
+        return <UserCard key={i} {...e}></UserCard>
+    }) : campaigns.map((e,i)=>{
         return <UserCard key={i} {...e}></UserCard>
     })
 
