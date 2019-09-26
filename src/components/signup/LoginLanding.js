@@ -23,12 +23,14 @@ const LoginFormStyle = styled.div`
 
         h1{
             font-family: 'Noto Serif', serif;
+            text-shadow:2px 6px 3px black;
             color:white;
             font-size:2rem;
             margin:0;
         }
         h2{
             font-size:1.2rem;
+            text-shadow:2px 6px 3px black;
             color:#ddd;
             font-family: 'Noto Serif', serif;
         }
