@@ -72,7 +72,7 @@ export const getAllCampaigns = () => dispatch => {
 export const addCampaign = campaign => dispatch => {
   dispatch({ type: ADD_CAMPAIGN, payload: campaign });
 
-  axiosWithAuth().post('/campaigns/campaign/add', campaign)
+  axiosWithAuth().post('/campaigns/campaign/add', {...campaign, userid: 11})
     .then(response => dispatch({ type: ADD_CAMPAIGN_SUCCESS, payload: response.data }))
     .catch(error => console.log('Add campaign error', error));
 };
@@ -96,7 +96,7 @@ export const deleteCampaign = campaign => dispatch => {
 export const donateToCampaign = (campaign, amount) => dispatch => {
   dispatch({ type: DONATE_CAMPAIGN, payload: campaign });
 
-  axiosWithAuth().post('/campaigns/campaign/donate', { campaignid: campaign.campaignid, amount })
+  axiosWithAuth().post('/campaigns/campaign/donate', { campaignid: campaign.campaignid, amount, userid: 11 })
     .then(response =>{
       alert("Success - You Have Sent $" + amount + ".");
       dispatch({ type: DONATE_CAMPAIGN_SUCCESS, payload: response.data })

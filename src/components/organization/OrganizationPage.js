@@ -15,7 +15,7 @@ function LocalOrganizationPage(props) {
     useEffect(() => {
         if (props.user) {
             getUserCampaigns(props.user.userid)
-                .then(response => setMyCampaigns(response.data))
+                .then(response => console.log(response.data))
                 .catch(error => console.log('Failed to get my campaigns', error));
         }
     }, [myCampaigns, props.user]);
