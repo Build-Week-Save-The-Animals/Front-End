@@ -1,7 +1,9 @@
-import React,{useEffect} from "react";
+import React from "react";
 import {withFormik, Field, Form} from "formik";
 import styled from "styled-components";
 import {colors} from '../../colors';
+import { connect } from 'react-redux';
+import { createUser } from '../../actions';
 
 const SupporterFormStyle = styled.section`
     form {
@@ -77,14 +79,7 @@ const SupporterFormStyle = styled.section`
     }
 `
 
-function SupporterForm({status,doLogin}){
-
-    useEffect(()=>{
-        if(status){
-            doLogin(status);
-        }
-    },[])
-
+function SupporterForm({doLogin}){
     return(
         <SupporterFormStyle>
             <Form>
@@ -98,23 +93,56 @@ function SupporterForm({status,doLogin}){
                     <Field type="password" name="password" placeholder="password"></Field>
                 </label>
 
+                <label>
+                    Enter Your Email
+                    <Field type="email" name="email" placeholder="Email"></Field>
+                </label>
+
                 <button className="alt" type="submit">Submit <i className="fas fa-user-circle"></i></button>
             </Form>
         </SupporterFormStyle>
     )
 }
 
-export const SupporterFormik = withFormik({
+const LocalSupporterFormik = withFormik({
     mapPropsToValues(val){
         return {
             username:val.username || "",
             password:val.password || "",
-            role: "supporter"
+            role: "supporter",
+            email:val.email || ""
         }
     },
-    handleSubmit({username,password,role},{setStatus}){
+    handleSubmit(values,{props}){
+
+        let user = {
+            username:values.username,
+            password:values.password,
+            userroles:[
+                {
+                    "role": {
+                        "roleid": 2,
+                        "name": "data"  
+                    }
+                },
+                {
+                    "role": {
+                        "roleid": 4,
+                        "name": values.role
+                    }
+                }
+            ],
+            useremails: [
+                {
+                    useremail: values.email
+                }
+           
+            ]
+        }
         
-        setStatus({username,password,role})
+        props.createUser(user);
     }
 
 })(SupporterForm);
+
+export const SupporterFormik = connect(null, { createUser })(LocalSupporterFormik);
