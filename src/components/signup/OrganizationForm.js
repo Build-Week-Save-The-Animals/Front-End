@@ -1,7 +1,9 @@
-import React,{useEffect}  from "react";
+import React  from "react";
 import {withFormik, Field, Form} from "formik";
 import styled from "styled-components";
 import {colors} from '../../colors';
+import { connect } from 'react-redux';
+import { createUser } from '../../actions';
 
 const OrganizationFormStyle = styled.section`
     form {
@@ -85,13 +87,6 @@ const OrganizationFormStyle = styled.section`
 `
 
 function OrganizationForm({status,doLogin}){
-
-    useEffect(()=>{
-        if(status){
-            doLogin(status);
-        }
-    },[])
-
     return(
         <OrganizationFormStyle>
             <Form>
@@ -117,7 +112,7 @@ function OrganizationForm({status,doLogin}){
     )
 }
 
-export const OrganizationFormik = withFormik({
+const LocalOrganizationFormik = withFormik({
     mapPropsToValues(val){
         return {
             username:val.username || "",
@@ -126,7 +121,7 @@ export const OrganizationFormik = withFormik({
             email:val.email || ""
         }
     },
-    handleSubmit(values,{setStatus}){
+    handleSubmit(values,{ props }){
         console.dir(values)
         let user = {
             username:values.username,
@@ -154,7 +149,9 @@ export const OrganizationFormik = withFormik({
         }
 
 
-        setStatus(user)
+        props.createUser(user);
     }
 
-})(OrganizationForm)
+})(OrganizationForm);
+
+export const OrganizationFormik = connect(null, { createUser })(LocalOrganizationFormik);
